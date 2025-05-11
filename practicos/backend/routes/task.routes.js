@@ -8,13 +8,13 @@ let tasksController = require('../controllers/task.controller');
 router.get('/getTasks', validationMiddleware, tasksController.getTasks);
 
 // OBTIENE UNA TAREA
-router.get('/getOneTask', validationMiddleware, tasksController.getOneTask);
+router.get('/getOneTask/:id', validationMiddleware, tasksController.getOneTask);
 
 // ACTUALIZA UNA TAREA
-router.put('/updateTask', validationMiddleware, tasksController.updateTasks);
+router.put('/updateTask/:id', validationMiddleware, tasksController.updateTasks);
 
 // ELIMINA UNA TAREA
-router.delete('/deleteTask', validationMiddleware, tasksController.deleteTask);
+router.delete('/deleteTask/:id', validationMiddleware, tasksController.deleteTask);
 
 // CREA UNA TAREA
 router.post('/createTask', validationMiddleware, tasksController.createTask);

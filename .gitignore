@@ -1,2 +1,5 @@
 /node_modules/
-/package-lock.json
+/practicos/package-lock.json
+/practicos/node_modules/
+/practicos/backend/node_modules/
+/practicos/backend/package-lock.json

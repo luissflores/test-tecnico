@@ -1,5 +1,6 @@
 const express = require('express')
 const mongoose = require('mongoose')
+const morgan = require('morgan')
 const multer = require('multer')
 const fs = require('fs')
 const path = require('path')
@@ -24,27 +25,27 @@ const upload = multer({storage})
 
 const app = express()
 app.use(cors())
+app.use(morgan('dev'))
 app.use(express.json())
-
-app.use('/api/', routes)
 
 app.use('/task/uploadFile', upload.single('file'), (req, res) => {
   const file = req.file;
 
-  if (!file){
+  if (!file) {
     return res.status(400).json({
       error: 'File not found',
-      sucess: false,
+      success: false,
     })
   }
 
   res.status(200).json({
     message: 'Successfully uploaded',
-    sucess: true,
+    success: true,
     file: file.filename,
     path: `/uploads/${file.filename}`
   })
 })
+app.use('/api/', routes)
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')))
 
 

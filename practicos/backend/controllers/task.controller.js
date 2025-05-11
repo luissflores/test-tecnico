@@ -5,8 +5,6 @@ const taskModel = require('../models/tasks.model');
 const getTasks = async function (req, res) {
   try {
     let tasks = await taskModel.find()
-
-    console.log('taresas  ------------------->', tasks)
     res.status(200).json({
       success: true,
       message: 'success',
